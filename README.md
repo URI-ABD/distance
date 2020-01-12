@@ -1,2 +1,2 @@
-# CHESS-rust
-Rust implementation of CHESS (Clustered Hierarchical Entropy-Scaling Search)
+# distance
+Rust implementation of several distance functions
