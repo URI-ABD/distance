@@ -19,4 +19,4 @@ jobs:
         run: docker build --no-cache -t distance .
 
       - name: Unit Tests
-        run: docker run cargo test
+        run: docker run distance cargo test
