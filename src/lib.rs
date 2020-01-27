@@ -81,12 +81,9 @@ pub mod distance {
 
         let mut pre;
         let mut tmp;
-        let mut cur = vec![0; len_b];
 
         // initialize DP table for string b
-        for i in 1..len_b {
-            cur[i] = i;
-        }
+        let mut cur: Vec<usize> = (0..len_b).collect();
 
         // calculate edit distance
         for (i,ca) in a.chars().enumerate() {
