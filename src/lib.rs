@@ -2,6 +2,27 @@ pub mod categorical;
 pub mod numeric;
 pub mod string;
 
+use numeric::*;
+use categorical::*;
+pub struct Generic<T> {
+    dumb: T,
+}
+
+trait FromNumeric<T: Numeric> {
+    fn foo(data: T) -> T {
+        data
+    }
+}
+
+trait FromCategorical<T: Categorical> {
+    fn foo(data: T) -> T {
+        data
+    }
+}
+
+impl<T: Numeric> FromNumeric<T> for Generic<T> {}
+impl<T: Categorical> FromCategorical<T> for Generic<T> {}
+
 pub struct Builder;
 
 impl Builder {
@@ -26,6 +47,12 @@ mod tests {
     use float_cmp::approx_eq;
 
     use super::*;
+
+    #[test]
+    fn test_generic_build() {
+        let x = 1.;
+        let metric = Generic::<f64>::foo(x);
+    }
 
     #[test]
     fn test_build_numeric() {
