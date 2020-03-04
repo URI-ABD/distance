@@ -1,3 +1,6 @@
+use categorical::*;
+use numeric::*;
+
 pub mod categorical;
 pub mod numeric;
 pub mod string;
@@ -30,6 +33,8 @@ impl Builder {
         match metric {
             "euclidean" => numeric::euclidean,
             "euclideansq" => numeric::euclideansq,
+            "cosine" => numeric::cosine,
+            "manhattan" => numeric::manhattan,
             _ => panic!("{} is not a numeric distance function!", metric),
         }
     }

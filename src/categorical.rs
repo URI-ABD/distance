@@ -1,8 +1,8 @@
-use rayon::prelude::*;
-use std::iter::Sum;
 use num::FromPrimitive;
+use rayon::prelude::*;
 
-pub trait Categorical: PartialEq + Sync + Send + Sum + FromPrimitive {}
+pub trait Categorical: PartialEq + Sync + Send + FromPrimitive {}
+
 impl Categorical for i128 {}
 impl Categorical for i64 {}
 impl Categorical for i32 {}
