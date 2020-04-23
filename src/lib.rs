@@ -2,9 +2,20 @@ pub mod categorical;
 pub mod numeric;
 pub mod string;
 
+pub enum Datum {
+    Numeric(numeric::Numeric),
+    String,
+}
+
 pub struct Builder;
 
 impl Builder {
+    pub fn function(metric: &'static str) -> fn(Datum, Datum) -> f64 {
+        match metric {
+            "euclidean" => numeric::euclidean,
+            _ => panic!("Fuck!")
+        }
+    }
     pub fn numeric<I: numeric::Numeric>(metric: &'static str) -> fn(&[I], &[I]) -> I {
         match metric {
             "euclidean" => numeric::euclidean,

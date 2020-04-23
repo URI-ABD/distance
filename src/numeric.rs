@@ -7,6 +7,11 @@ use num::Float;
 
 use rayon::prelude::*;
 
+pub enum NumericDatum {
+    F64,
+    F32,
+}
+
 pub trait Numeric: Float + Sum + Send + Sync {}
 
 impl Numeric for f64 {}
